@@ -17,7 +17,7 @@ type SpotifyPlayerInternal = {
     pause: () => Promise<void>
     resume: () => Promise<void>
     togglePlay: () => Promise<void>
-    seek: () => Promise<void>
+    seek: (position: number) => Promise<void>
     previousTrack: () => Promise<void>
     nextTrack: () => Promise<void>
     activateElement: () => Promise<void>
@@ -123,8 +123,8 @@ export class SpotifyPlayer {
     togglePlay(): Promise<void> {
         return this.player.togglePlay()
     }
-    seek(): Promise<void> {
-        return this.player.seek()
+    seek(position: number): Promise<void> {
+        return this.player.seek(position);
     }
     previousTrack(): Promise<void> {
         return this.player.previousTrack()
