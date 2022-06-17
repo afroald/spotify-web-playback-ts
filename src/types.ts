@@ -1,18 +1,34 @@
 export type SpotifyPlayerError = 'initialization_error' | 'authentication_error' | 'account_error' | 'playback_error';
 
 export type SpotifyPlayerTrack = {
-  uri: string; // Spotify URI
-  id?: string; // Spotify ID from URI (can be null)
-  type: 'track' | 'episode' | 'add'; // Content type: can be "track", "episode" or "ad"
-  media_type: 'audio' | 'video'; // Type of file: can be "audio" or "video"
-  name: string; // Name of content
-  is_playable: boolean; // Flag indicating whether it can be played
   album: {
-    uri: string; // Spotify Album URI
+    images: {
+      size: string;
+      url: string;
+      width: number;
+      height: number;
+    }[];
     name: string;
-    images: [{ url: string }];
+    uri: string;
   };
-  artists: [{ uri: string; name: string }];
+  artists: {
+    name: string;
+    uri: string;
+    url: string;
+  }[];
+  duration_ms: number;
+  id: string;
+  is_playable: boolean;
+  linked_from: {
+    uri: string;
+    id: string;
+  };
+  media_type: 'audio' | 'video';
+  name: string;
+  track_type: 'audio';
+  type: 'track' | 'episode' | 'ad';
+  uid: string;
+  uri: string;
 };
 
 export type SpotifyPlayerState = {
